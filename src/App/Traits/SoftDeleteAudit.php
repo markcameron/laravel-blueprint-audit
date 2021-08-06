@@ -18,7 +18,7 @@ trait SoftDeleteAudit
             $model->saveQuietly();
         });
 
-        static::restoring(function ($model) use ($id, $type) {
+        static::restoring(function ($model) {
             $model->deleted_by = null;
             $model->deleter_type = null;
         });

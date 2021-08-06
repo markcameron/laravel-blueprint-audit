@@ -30,7 +30,7 @@ trait Audit
 
         return [
             $extractor->getId(),
-            $extractor->getType()
+            $extractor->getType(),
         ];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Database\Schema {
+namespace Illuminate\Database\Schema;
 
     class Blueprint
     {
@@ -16,4 +16,3 @@ namespace Illuminate\Database\Schema {
             return $instance->handle();
         }
     }
-}
