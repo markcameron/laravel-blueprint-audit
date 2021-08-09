@@ -42,3 +42,41 @@ You can modify how the IDs and types are being extracted by publishing the confi
 with ``php artisan vendor:publish --tag=asseco-blueprint-audit`` and implementing 
 your own extractor class. Be sure your extended class implements ``Extractor``
 interface.
+
+### Runtime picker
+
+There is a helper class which will enable you to pick timestamp types during 
+runtime. So what you can do is define a config key which will be forwarded
+within a migration and will choose which migrations type to run.
+
+Example, having the following migration:
+
+```php
+public function up()
+{
+    Schema::create('matches', function (Blueprint $table) {
+        // ...
+        // some fields
+        // ...
+
+        MigrationMethodPicker::pick($table, config('your-config.timestamps'));
+    });
+}
+```
+
+Config value being one of the ``MigrationMethodPicker`` types i.e. `'soft'` will 
+evaluate your migration to:
+
+```php
+public function up()
+{
+    Schema::create('matches', function (Blueprint $table) {
+        // ...
+        // some fields
+        // ...
+
+        $table->timestamps();
+        $table->softDeletes();
+    });
+}
+```
