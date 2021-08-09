@@ -2,10 +2,12 @@
 
 namespace Asseco\BlueprintAudit\App;
 
+use Exception;
 use Illuminate\Database\Schema\Blueprint;
 
 class MigrationMethodPicker
 {
+    public const PLAIN = 'plain';
     public const SOFT = 'soft';
     public const PARTIAL = 'partial';
     public const FULL = 'full';
@@ -13,6 +15,9 @@ class MigrationMethodPicker
     public static function pick(Blueprint $table, string $migrationConfig = null)
     {
         switch ($migrationConfig) {
+            case self::PLAIN:
+                $table->timestamps();
+                break;
             case self::SOFT:
                 $table->timestamps();
                 $table->softDeletes();
@@ -24,8 +29,7 @@ class MigrationMethodPicker
                 $table->softDeleteAudit();
                 break;
             default:
-                $table->timestamps();
-                break;
+                throw new Exception("No such picker defined.");
         }
     }
 }
