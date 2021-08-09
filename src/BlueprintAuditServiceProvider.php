@@ -63,5 +63,4 @@ class BlueprintAuditServiceProvider extends ServiceProvider
             $this->string('deleter_type')->nullable();
         };
     }
-
 }
