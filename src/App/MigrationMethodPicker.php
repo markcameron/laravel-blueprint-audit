@@ -29,7 +29,7 @@ class MigrationMethodPicker
                 $table->softDeleteAudit();
                 break;
             default:
-                throw new Exception("No such picker defined.");
+                throw new Exception('No such picker defined.');
         }
     }
 }
