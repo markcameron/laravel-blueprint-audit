@@ -25,8 +25,10 @@ trait Audit
 
     protected static function extract(): array
     {
+        // Can't bind here because trait boots before binding happens
         /** @var Extractor $extractor */
-        $extractor = app(Extractor::class);
+        $extractorClass = config('asseco-blueprint-audit.extractor');
+        $extractor = new $extractorClass;
 
         return [
             $extractor->getId(),
