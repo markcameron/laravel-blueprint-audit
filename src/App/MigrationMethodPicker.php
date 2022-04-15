@@ -13,9 +13,10 @@ class MigrationMethodPicker
     public const FULL = 'full';
 
     /**
-     * @param Blueprint $table
-     * @param string|null $migrationConfig
+     * @param  Blueprint  $table
+     * @param  string|null  $migrationConfig
      * @return void
+     *
      * @throws Exception
      */
     public static function pick(Blueprint $table, string $migrationConfig = null)
