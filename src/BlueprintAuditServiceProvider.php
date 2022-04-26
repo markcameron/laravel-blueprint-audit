@@ -52,7 +52,7 @@ class BlueprintAuditServiceProvider extends ServiceProvider
     {
         return function ($precision = 0) {
             /** @var $this Blueprint */
-            $this->audit($precision); // @phpstan-ignore-line
+            $this->audit($precision);
 
             $this->timestamp('deleted_at', $precision)->nullable(); // @phpstan-ignore-line
             $this->string('deleted_by')->nullable(); // @phpstan-ignore-line
