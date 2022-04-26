@@ -12,6 +12,13 @@ class MigrationMethodPicker
     public const PARTIAL = 'partial';
     public const FULL = 'full';
 
+    /**
+     * @param  Blueprint  $table
+     * @param  string|null  $migrationConfig
+     * @return void
+     *
+     * @throws Exception
+     */
     public static function pick(Blueprint $table, string $migrationConfig = null)
     {
         switch ($migrationConfig) {

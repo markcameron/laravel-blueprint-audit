@@ -37,30 +37,26 @@ class BlueprintAuditServiceProvider extends ServiceProvider
     protected function audit(): Closure
     {
         return function ($precision = 0) {
-            /**
-             * @var $this Blueprint
-             */
-            $this->timestamp('created_at', $precision)->nullable();
-            $this->string('created_by')->nullable();
-            $this->string('creator_type')->nullable();
+            /** @var $this Blueprint */
+            $this->timestamp('created_at', $precision)->nullable(); // @phpstan-ignore-line
+            $this->string('created_by')->nullable(); // @phpstan-ignore-line
+            $this->string('creator_type')->nullable(); // @phpstan-ignore-line
 
-            $this->timestamp('updated_at', $precision)->nullable();
-            $this->string('updated_by')->nullable();
-            $this->string('updater_type')->nullable();
+            $this->timestamp('updated_at', $precision)->nullable(); // @phpstan-ignore-line
+            $this->string('updated_by')->nullable(); // @phpstan-ignore-line
+            $this->string('updater_type')->nullable(); // @phpstan-ignore-line
         };
     }
 
     protected function softDeleteAudit(): Closure
     {
         return function ($precision = 0) {
-            /**
-             * @var $this Blueprint
-             */
+            /** @var $this Blueprint */
             $this->audit($precision);
 
-            $this->timestamp('deleted_at', $precision)->nullable();
-            $this->string('deleted_by')->nullable();
-            $this->string('deleter_type')->nullable();
+            $this->timestamp('deleted_at', $precision)->nullable(); // @phpstan-ignore-line
+            $this->string('deleted_by')->nullable(); // @phpstan-ignore-line
+            $this->string('deleter_type')->nullable(); // @phpstan-ignore-line
         };
     }
 }
