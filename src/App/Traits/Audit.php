@@ -8,16 +8,18 @@ trait Audit
 {
     protected static function bootAudit()
     {
-        [$id, $type] = self::extract();
+        static::creating(function ($model) {
+            [$id, $type] = self::extract();
 
-        static::creating(function ($model) use ($id, $type) {
             $model->created_by = $id;
             $model->creator_type = $type;
             $model->updated_by = $id;
             $model->updater_type = $type;
         });
 
-        static::updating(function ($model) use ($id, $type) {
+        static::updating(function ($model) {
+            [$id, $type] = self::extract();
+
             $model->updated_by = $id;
             $model->updater_type = $type;
         });

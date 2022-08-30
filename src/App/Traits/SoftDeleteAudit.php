@@ -10,9 +10,9 @@ trait SoftDeleteAudit
 
     protected static function bootSoftDeleteAudit()
     {
-        [$id, $type] = self::extract();
+        static::deleting(function ($model) {
+            [$id, $type] = self::extract();
 
-        static::deleting(function ($model) use ($id, $type) {
             $model->deleted_by = $id;
             $model->deleter_type = $type;
             $model->saveQuietly();
