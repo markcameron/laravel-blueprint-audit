@@ -2,17 +2,17 @@
 
 namespace Illuminate\Database\Schema;
 
-    class Blueprint
+class Blueprint
+{
+    public function audit($precision = 0): \Closure
     {
-        public function audit($precision = 0): \Closure
-        {
-            /** @var \Asseco\Chassis\Initializers\BlueprintAudit $instance */
-            return $instance->handle();
-        }
-
-        public function softDeleteAudit($precision = 0): \Closure
-        {
-            /** @var \Asseco\Chassis\Initializers\BlueprintAudit $instance */
-            return $instance->handle();
-        }
+        /** @var \Asseco\Chassis\Initializers\BlueprintAudit $instance */
+        return $instance->handle();
     }
+
+    public function softDeleteAudit($precision = 0): \Closure
+    {
+        /** @var \Asseco\Chassis\Initializers\BlueprintAudit $instance */
+        return $instance->handle();
+    }
+}
